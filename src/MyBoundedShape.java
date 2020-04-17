@@ -2,6 +2,9 @@ import java.awt.Color;
 
 public abstract class MyBoundedShape extends MyShape {
 
+    /**
+     * Indicates whether the shape is filled.
+     */
     private boolean isFilled;
 
     /**

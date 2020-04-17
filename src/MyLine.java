@@ -1,5 +1,5 @@
-import java.awt.*;
-import java.awt.geom.Line2D;
+import java.awt.Graphics;
+import java.awt.Color;
 
 public class MyLine extends MyShape {
 
@@ -18,11 +18,8 @@ public class MyLine extends MyShape {
 
     @Override
     public void draw(Graphics graphics) {
-        // TODO check that Graphics2D can be used
-        Graphics2D g2 = (Graphics2D) graphics;
-        Line2D line = new Line2D.Float(this.getX1(), this.getY1(), this.getX2(), this.getY2());
-        g2.setColor(this.getColor());
-        g2.draw(line);
+        graphics.setColor(this.getColor());
+        graphics.drawLine(this.getX1(), this.getY1(), this.getX2(), this.getY2());
     }
 
     @Override
@@ -35,7 +32,6 @@ public class MyLine extends MyShape {
         double otherLineLength = this.calculateLength(otherLine);
         double currLineLength = this.calculateLength(this);
 
-        // TODO this calculation might fail with double
         return currLineLength == otherLineLength;
     }
 

@@ -5,25 +5,49 @@ import java.util.Random;
 
 public class Main {
 
+    /**
+     * Max pixel value a shape can be created at.
+     */
     private static final int MAX_PIXEL = 200;
+
+    /**
+     * Default shape color.
+     */
     private static final Color DEFAULT_COLOR = Color.red;
+
+    /**
+     * Default value of whether the shape is filled.
+     */
     private static final boolean DEFAULT_IS_FILLED = true;
+
     private static final int PIXEL_ADDITION = 10;
 
     public static void main(String[] args) {
 
+        // Create a list of shapes
         List<MyShape> originalShapes = initializeShapes();
 
         try {
+
+            // Clone the original shapes into a separate list
             List<MyShape> clonedShapes = cloneShapes(originalShapes);
+
+            // Modify the cloned shapes
             modifyShapes(clonedShapes);
-            drawShape(originalShapes, clonedShapes);
+
+            // Draw both the original and cloned shapes
+            drawShapes(originalShapes, clonedShapes);
         } catch (CloneNotSupportedException e) {
             System.out.println("Failed to clone the list");
             e.printStackTrace();
         }
     }
 
+    /**
+     * Creates a list with shapes.
+     *
+     * @return list of shapes
+     */
     public static List<MyShape> initializeShapes() {
         List<MyShape> shapes = new ArrayList<>();
         Random random = new Random();
@@ -61,6 +85,13 @@ public class Main {
         return shapes;
     }
 
+    /**
+     * Clones a given list of shapes.
+     *
+     * @param shapes shapes to clone
+     * @return list of cloned shapes
+     * @throws CloneNotSupportedException indicates that cloning is not supported
+     */
     private static List<MyShape> cloneShapes(List<MyShape> shapes) throws CloneNotSupportedException {
         List<MyShape> clonedShapes = new ArrayList<>(shapes.size());
 
@@ -71,6 +102,11 @@ public class Main {
         return clonedShapes;
     }
 
+    /**
+     * Modifies the given list of shapes.
+     *
+     * @param shapes list of shapes to modify
+     */
     private static void modifyShapes(List<MyShape> shapes) {
 
         for (MyShape shape : shapes) {
@@ -84,7 +120,13 @@ public class Main {
         }
     }
 
-    private static void drawShape(List<MyShape> originalShapes, List<MyShape> clonedShapes) {
+    /**
+     * Draws the given shapes.
+     *
+     * @param originalShapes original shapes to draw
+     * @param clonedShapes   cloned shapes to draw
+     */
+    private static void drawShapes(List<MyShape> originalShapes, List<MyShape> clonedShapes) {
         new ShapesDrawing(originalShapes, clonedShapes);
     }
 }

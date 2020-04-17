@@ -3,7 +3,6 @@ import java.awt.Graphics;
 
 public abstract class MyShape implements Cloneable {
 
-    // TODO should it be double?
     private int x1;
     private int y1;
     private int x2;
